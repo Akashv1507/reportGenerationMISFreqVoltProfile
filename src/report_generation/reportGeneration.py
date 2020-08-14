@@ -24,7 +24,7 @@ def reportGeneration(startDate :dt.datetime, endDate:dt.datetime, configDict: di
     doc = DocxTemplate(definedTemplatePath)
     doc.render(context)
     doc.save(templateSavePath)
-    # print(derFreqList)
+    
 
 
 
