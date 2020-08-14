@@ -16,7 +16,7 @@ class FetchDerivedFrequency():
         df['DATE_KEY'] = df['DATE_KEY'].dt.day
         derFreqRows = []
         derivedFrequencyDict = {}
-        weeklyVDI = (df['OUT_OF_BAND_INHRS'].sum())/168
+        weeklyFDI = (df['OUT_OF_BAND_INHRS'].sum())/168
         for ind in df.index:
             tempDict = {
                         'date' : df['DATE_KEY'][ind],
@@ -32,7 +32,7 @@ class FetchDerivedFrequency():
                         }
             derFreqRows.append(tempDict)
         derivedFrequencyDict['rows'] = derFreqRows
-        derivedFrequencyDict['weeklyVDI'] = weeklyVDI
+        derivedFrequencyDict['weeklyFDI'] = weeklyFDI
 
         return derivedFrequencyDict
 

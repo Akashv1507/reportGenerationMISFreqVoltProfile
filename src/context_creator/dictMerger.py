@@ -9,14 +9,16 @@ class DictMerger():
         self.startDate = startDate.strftime("%Y-%m-%d")
         self.endDate =  endDate.strftime("%Y-%m-%d")
     
-    def dictMerger(self,rows:List[dict],weeklyVDI:int) -> dict:
-        print(round(weeklyVDI,2))
+    def dictMerger(self,rowsFreqProfile:List[dict],weeklyFDI:int,rows400Kv:List[dict], rows765Kv:List[dict]) -> dict:
+       
         context = {
                   'year_str' : self.year,
                   'week_no'  : self.weekNo,
                   'start_dt' : self.startDate,
                   'end_dt'   : self.endDate,
-                  'weekVDI'  : round(weeklyVDI,2),
-                  'derFreqList' : rows
+                  'weekVDI'  : round(weeklyFDI,2),
+                  'derFreqList' : rowsFreqProfile,
+                  'rows400Kv' : rows400Kv,
+                  'rows765Kv'  : rows765Kv
         }
         return context
