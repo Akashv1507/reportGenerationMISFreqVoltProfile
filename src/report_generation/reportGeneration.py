@@ -1,33 +1,38 @@
 from src.repos.fetchDerivedFrequecny import FetchDerivedFrequency
-from src.context_creator.dictMerger import DictMerger
+from src.context_creator.contextCreator import ContextCreator
 from src.repos.fetchDerivedVDI import FetchDerivedVDI
 import datetime as dt
 from typing import List, Tuple
 from docxtpl import DocxTemplate
 
 def reportGeneration(startDate :dt.datetime, endDate:dt.datetime, configDict: dict)-> None:
+    """function that generate weekly Mis Report
 
-    year = startDate.isocalendar()[0]
+    Args:
+        startDate (dt.datetime): start date of weekly report
+        endDate (dt.datetime): start date of weekly report
+        configDict (dict): app configuration dictionary
+    """    
+
+    year = startDate.isocalendar()[0]                 
     week_number = startDate.isocalendar()[1]
 
     
-    con_string= configDict['con_string_local']
+    con_string= configDict['con_string_mis_warehouse']
     
 
-    obj_dictMerger = DictMerger(year, week_number, startDate, endDate)
+    obj_dictMerger = ContextCreator(year, week_number, startDate, endDate)
     obj_fetchDerivedFrequency = FetchDerivedFrequency(con_string)
     obj_fetchDerivedVDI = FetchDerivedVDI(con_string)
 
     
-
-
     derivedFrequencyDict = obj_fetchDerivedFrequency.fetchDerivedFrequency(startDate,endDate)
     derivedVDIDict = obj_fetchDerivedVDI.fetchDerivedVDI(startDate)
-    context = obj_dictMerger.dictMerger(derivedFrequencyDict['rows'], derivedFrequencyDict['weeklyFDI'],derivedVDIDict['VDIRows400Kv'],derivedVDIDict['VDIRows765Kv'])
-    # print(context['rows400Kv'])
+    context = obj_dictMerger.contextCreator(derivedFrequencyDict['rows'], derivedFrequencyDict['weeklyFDI'],derivedVDIDict['VDIRows400Kv'],derivedVDIDict['VDIRows765Kv'])
+    
 
-    definedTemplatePath = configDict['template_path'] + '\\freq_volt_1.docx'
-    templateSavePath = configDict['template_path'] + '\\xyz.docx'
+    definedTemplatePath = configDict['template_path'] + '\\freq_volt_profile_raw_template.docx'
+    templateSavePath = configDict['template_path'] + '\\weekly-report.docx'
     doc = DocxTemplate(definedTemplatePath)
     doc.render(context)
     doc.save(templateSavePath)

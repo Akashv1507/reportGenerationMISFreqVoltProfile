@@ -1,5 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\Akash Verma\\anaconda3\\envs\\postgrace\\python.exe",
     "python.linting.mypyEnabled": true,
     "python.testing.unittestArgs": [
         "-v",

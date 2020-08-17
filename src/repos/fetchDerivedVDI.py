@@ -5,12 +5,29 @@ from typing import List, Tuple
 
 
 class FetchDerivedVDI():
+    """repo class to fetch derived VDI
+    """    
 
     def __init__(self,con_string):
+        """constructor method
+
+        Args:
+            con_string ([type]): connection string
+        """
 
         self.connString=con_string
     
     def toDerivedVDIDict(self, df:pd.core.frame.DataFrame)-> dict:
+        """returns derivedVDIDict that has two keys 1- derivedVDIDict['VDIRows400Kv']   =   VDIRows400Kv
+                                                  2- derivedVDIDict['VDIRows765Kv']   =   VDIRows765Kv
+
+        Args:
+            df (pd.core.frame.DataFrame): pandas dataframe
+
+        Returns:
+            dict: dictionary derivedVDIDict 
+        """        
+
         del[df['ID'],df['MAPPING_ID'],df['WEEK_START_DATE']]
         srNo = 0
         VDIRows400Kv = []
@@ -19,8 +36,7 @@ class FetchDerivedVDI():
 
         group = df.groupby("NODE_VOLTAGE")
         for nameOfGroup,groupDf in group:
-            # print(nameOfGroup)
-            # print(groupDf['NODE_NAME'])
+            
             if nameOfGroup == 400:
                 for ind in groupDf.index:
                     srNo = srNo +1
@@ -64,6 +80,15 @@ class FetchDerivedVDI():
 
     
     def fetchDerivedVDI(self, startDate : dt.datetime )->dict:
+        """fetched derived VDI from mis_warehouse db
+
+        Args:
+            startDate (dt.datetime): start-date
+
+        Returns:
+            dict: returns derivedVDIDict that has two keys 1- derivedVDIDict['VDIRows400Kv']   =   VDIRows400Kv
+                                                         2- derivedVDIDict['VDIRows765Kv']   =   VDIRows765Kv
+        """        
         
         try:
             connection=cx_Oracle.connect(self.connString)

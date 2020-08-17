@@ -5,12 +5,29 @@ from typing import List, Tuple
 
 
 class FetchDerivedFrequency():
+    """repo class to fetch derived frequency
+    """    
+
 
     def __init__(self,con_string):
+        """constructor method
+
+        Args:
+            con_string ([type]): connection string
+        """        
 
         self.connString=con_string
 
     def toContextDict(self, df:pd.core.frame.DataFrame) -> dict:
+        """ return derivedFrequencyDict that has two keys 1- derivedFrequencyDict['rows'] = derFreqRows
+                                                         2- derivedFrequencyDict['weeklyFDI'] = weeklyFDI
+
+        Args:
+            df (pd.core.frame.DataFrame):pandas dataframe
+
+        Returns:
+            dict: derivedFrequencyDict
+        """        
         
         del df['ID']
         df['DATE_KEY'] = df['DATE_KEY'].dt.day
@@ -36,12 +53,18 @@ class FetchDerivedFrequency():
 
         return derivedFrequencyDict
 
-            
-
-
-
 
     def fetchDerivedFrequency(self, startDate : dt.datetime , endDate: dt.datetime)->dict:
+        """fetch derived frequency from mis_warehouse db 
+
+        Args:
+            startDate (dt.datetime): start date
+            endDate (dt.datetime): end date
+
+        Returns:
+            dict: return derivedFrequencyDict that has two keys 1- derivedFrequencyDict['rows'] = derFreqRows
+                                                               2- derivedFrequencyDict['weeklyFDI'] = weeklyFDI
+        """        
         
 
         try:
