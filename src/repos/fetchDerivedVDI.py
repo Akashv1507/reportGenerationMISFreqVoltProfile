@@ -101,8 +101,8 @@ class FetchDerivedVDI():
             try:
                 cur=connection.cursor()
                 fetch_sql='''select vdi.* from 
-                            derived_vdi vdi,mapping_table mt
-                            where  vdi.mapping_id = mt.id and mt.is_included_in_weekly = 'T' and week_start_date = to_date(:start_date)'''
+                            derived_vdi vdi,voltage_mapping_table mt
+                            where  vdi.mapping_id = mt.id and mt.is_included_in_weekly_vdi = 'T' and week_start_date = to_date(:start_date)'''
 
                 cur.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD' ")
                 df=pd.read_sql(fetch_sql,params={'start_date' : startDate},con=connection)

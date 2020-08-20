@@ -19,7 +19,7 @@ class ContextCreator():
         self.startDate = startDate.strftime("%Y-%m-%d")
         self.endDate =  endDate.strftime("%Y-%m-%d")
     
-    def contextCreator(self,rowsFreqProfile:List[dict],weeklyFDI:int,rows400Kv:List[dict], rows765Kv:List[dict]) -> dict:
+    def contextCreator(self,rowsFreqProfile:List[dict],weeklyFDI:int,rows400Kv:List[dict], rows765Kv:List[dict],voltValuesTable1:List[dict],voltValuesTable2:List[dict],voltValuesTable3:List[dict],voltValuesTable4:List[dict]) -> dict:
         """create context for template
 
         Args:
@@ -40,6 +40,10 @@ class ContextCreator():
                   'weekVDI'  : round(weeklyFDI,2),
                   'derFreqList' : rowsFreqProfile,
                   'rows400Kv' : rows400Kv,
-                  'rows765Kv'  : rows765Kv
+                  'rows765Kv'  : rows765Kv,
+                  'voltTable1' : voltValuesTable1,
+                  'voltTable2' : voltValuesTable2,
+                  'voltTable3' : voltValuesTable3,
+                  'voltTable4' : voltValuesTable4        
         }
         return context

@@ -4,8 +4,8 @@ from src. report_generation.reportGeneration import reportGeneration
 
 
 configDict=getAppConfigDict()
-startDate=dt.strptime("2019-07-22", '%Y-%m-%d')
-endDate=dt.strptime("2019-07-28", '%Y-%m-%d')
+startDate=dt.strptime("2020-07-06", '%Y-%m-%d')
+endDate=dt.strptime("2020-07-12", '%Y-%m-%d')
 
 
 
