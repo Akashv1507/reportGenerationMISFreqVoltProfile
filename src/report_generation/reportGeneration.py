@@ -18,10 +18,9 @@ def reportGeneration(startDate :dt.datetime, endDate:dt.datetime, configDict: di
     year = startDate.isocalendar()[0]                 
     week_number = startDate.isocalendar()[1]
 
-    
     con_string= configDict['con_string_mis_warehouse']
     
-
+    #creating instance of each classes
     obj_dictMerger = ContextCreator(year, week_number, startDate, endDate)
     obj_fetchDerivedFrequency = FetchDerivedFrequency(con_string)
     obj_fetchDerivedVoltage = FetchDerivedVoltage(con_string)

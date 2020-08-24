@@ -24,13 +24,18 @@ class ContextCreator():
 
         Args:
             rowsFreqProfile (List[dict]): rows in form of dictionary 
-            weeklyFDI (int): weekly FDI
-            rows400Kv (List[dict]): rows that belongs to 400Kv nodes
-            rows765Kv (List[dict]): rows that belongs to 765Kv nodes
+            weeklyFDI (int)             : weekly FDI
+            rows400Kv (List[dict])      : rows that belongs to 400Kv nodes     
+            rows765Kv (List[dict])      : rows that belongs to 765Kv nodes 
+            voltValuesTable1 (List[dict]): derived voltage value for table 1 in report template.
+            voltValuesTable2 (List[dict]): derived voltage value for table 2 in report template.
+            voltValuesTable3 (List[dict]): derived voltage value for table 3 in report template.
+            voltValuesTable4 (List[dict]): derived voltage value for table 4 in report template.
 
         Returns:
-            dict: context dictionary that we render in template
-        """        
+            dict: context dictionary that we render in template.
+
+            """          
        
         context = {
                   'year_str' : self.year,
@@ -46,4 +51,5 @@ class ContextCreator():
                   'voltTable3' : voltValuesTable3,
                   'voltTable4' : voltValuesTable4        
         }
+        
         return context

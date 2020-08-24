@@ -86,7 +86,7 @@ class FetchDerivedVDI():
             startDate (dt.datetime): start-date
 
         Returns:
-            dict: returns derivedVDIDict that has two keys 1- derivedVDIDict['VDIRows400Kv']   =   VDIRows400Kv
+            dict: returns derivedVDIDict that has two keys 1- derivedVDIDict['VDIRows400Kv']   =   VDIRows400Kv 
                                                          2- derivedVDIDict['VDIRows765Kv']   =   VDIRows765Kv
         """        
         

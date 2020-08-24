@@ -5,7 +5,7 @@ from typing import List, Tuple, TypedDict
 
 
 class FetchDerivedVoltage():
-    """repo class to fetch derived voltage
+    """repo class to fetch derived voltage from mis_warehouse db.
     """
 
     def __init__(self, con_string):
@@ -22,7 +22,16 @@ class FetchDerivedVoltage():
         self.derivedVoltageDict ={'table1':self.voltTable1,'table2':self.voltTable2,'table3':self.voltTable3,'table4':self.voltTable4}
 
 
-    def toFormat(self, df: pd.core.frame.DataFrame): 
+    def appendTables(self, df: pd.core.frame.DataFrame) -> None: 
+        """ append rows for each table for each day
+        voltTable1 =[]
+        voltTable2 =[]
+        voltTable3 =[]
+        voltTable4 =[]
+
+        Args:
+            df (pd.core.frame.DataFrame): pandas dataframe that contains derived voltage data for each day for all nodes.
+        """        
         date = df['DATE_KEY'][0].day
 
         dfTable1 = df.iloc[0:9]
@@ -47,9 +56,7 @@ class FetchDerivedVoltage():
         
         tempDictTable4 = {'date': date ,'sasanMax': dfTable4['MAXIMUM'][0],'sasanMin': dfTable4['MINIMUM'][0],'satnaMax': dfTable4['MAXIMUM'][1],'satnaMin': dfTable4['MINIMUM'][1],'seoniMax': dfTable4['MAXIMUM'][2],'seoniMin': dfTable4['MINIMUM'][2],'sipatMax': dfTable4['MAXIMUM'][3],'sipatMin': dfTable4['MINIMUM'][3],'tamnarMax': dfTable4['MAXIMUM'][4],'tamnarMin': dfTable4['MINIMUM'][4],'vadodaraMax': dfTable4['MAXIMUM'][5],'vadodaraMin': dfTable4['MINIMUM'][5],'wardhaMax': dfTable4['MAXIMUM'][6],'wardhaMin': dfTable4['MINIMUM'][6]}
         self.voltTable4.append(tempDictTable4)
-        
-
-            
+               
             
     def fetchDerivedVoltage(self, startDate: dt.datetime, endDate: dt.datetime) :
         """fetch derived voltage from mis_warehouse db 
@@ -59,6 +66,11 @@ class FetchDerivedVoltage():
             endDate (dt.datetime): end date
 
         Returns:
+            derivedVoltageDict ={'table1':voltTable1,    
+                                 'table2':voltTable2,
+                                 'table3':voltTable3,
+                                 'table4':voltTable4
+                                 }
 
         """
 
@@ -78,6 +90,8 @@ class FetchDerivedVoltage():
             print(connection.version)
             try:
                 cur = connection.cursor()
+
+                # fetching derived voltage data for each day.
                 for date in dates:
                     fetch_sql = '''select  vt.date_key, vt.node_name,mt.node_voltage, vt.maximum, vt.minimum from 
                                 derived_voltage vt, voltage_mapping_table mt
@@ -86,8 +100,12 @@ class FetchDerivedVoltage():
                     cur.execute(
                         "ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD ' ")
                     df = pd.read_sql(fetch_sql, params={ 'start_date': date}, con=connection)
+
+                    #sorting node_name alphabetically.
                     df.sort_values(['NODE_VOLTAGE', 'NODE_NAME'], ascending=[True, True], inplace=True,ignore_index=True)
-                    self.toFormat(df)    
+
+                    #passing object to appendTables method.
+                    self.appendTables(df)    
                     
 
             except Exception as err:
@@ -99,6 +117,5 @@ class FetchDerivedVoltage():
             cur.close()
             connection.close()
             print("connection closed")
-        
-        # print(self.derivedVoltageDict)
+    
         return self.derivedVoltageDict

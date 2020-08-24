@@ -5,7 +5,7 @@ from typing import List, Tuple
 
 
 class FetchDerivedFrequency():
-    """repo class to fetch derived frequency
+    """repo class to fetch derived frequency from mis_warehouse db.
     """    
 
 
