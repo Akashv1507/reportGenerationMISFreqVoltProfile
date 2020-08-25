@@ -34,7 +34,7 @@ def reportGeneration(startDate :dt.datetime, endDate:dt.datetime, configDict: di
     
 
     definedTemplatePath = configDict['template_path'] + '\\freq_volt_profile_raw_template.docx'
-    templateSavePath = configDict['template_path'] + '\\weekly-report2.docx'
+    templateSavePath = configDict['template_path'] + '\\13-july-2020_weekly-report.docx'
     doc = DocxTemplate(definedTemplatePath)
     doc.render(context)
     doc.save(templateSavePath)
