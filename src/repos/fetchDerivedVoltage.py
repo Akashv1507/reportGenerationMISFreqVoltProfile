@@ -45,16 +45,16 @@ class FetchDerivedVoltage():
         dfTable4 = df.iloc[27:]
         dfTable4.reset_index(drop=True,inplace=True)
 
-        tempDictTable1 = {'date': date ,'amreliMax': dfTable1['MAXIMUM'][0],'amreliMin': dfTable1['MINIMUM'][0],'asojMax': dfTable1['MAXIMUM'][1],'asojMin': dfTable1['MINIMUM'][1],'bhilaiMax': dfTable1['MAXIMUM'][2],'bhilaiMin': dfTable1['MINIMUM'][2],'bhopalMax': dfTable1['MAXIMUM'][3],'bhopalMin': dfTable1['MINIMUM'][3],'boisarMax': dfTable1['MAXIMUM'][4],'boisarMin': dfTable1['MINIMUM'][4],'damohMax': dfTable1['MAXIMUM'][5],'damohMin': dfTable1['MINIMUM'][5],'dehgamMax': dfTable1['MAXIMUM'][6],'dehgamMin': dfTable1['MINIMUM'][6],'dhuleMax': dfTable1['MAXIMUM'][7],'dhuleMin': dfTable1['MINIMUM'][7],'gwaliorMax': dfTable1['MAXIMUM'][8],'gwaliorMin': dfTable1['MINIMUM'][8]}
+        tempDictTable1 = {'date': date ,'amreliMax': round(dfTable1['MAXIMUM'][0]),'amreliMin': round(dfTable1['MINIMUM'][0]),'asojMax': round(dfTable1['MAXIMUM'][1]),'asojMin': round(dfTable1['MINIMUM'][1]),'bhilaiMax': round(dfTable1['MAXIMUM'][2]),'bhilaiMin': round(dfTable1['MINIMUM'][2]),'bhopalMax': round(dfTable1['MAXIMUM'][3]),'bhopalMin': round(dfTable1['MINIMUM'][3]),'boisarMax': round(dfTable1['MAXIMUM'][4]),'boisarMin': round(dfTable1['MINIMUM'][4]),'damohMax': round(dfTable1['MAXIMUM'][5]),'damohMin': round(dfTable1['MINIMUM'][5]),'dehgamMax': round(dfTable1['MAXIMUM'][6]),'dehgamMin': round(dfTable1['MINIMUM'][6]),'dhuleMax': round(dfTable1['MAXIMUM'][7]),'dhuleMin': round(dfTable1['MINIMUM'][7]),'gwaliorMax': round(dfTable1['MAXIMUM'][8]),'gwaliorMin': round(dfTable1['MINIMUM'][8])}
         self.voltTable1.append(tempDictTable1)
       
-        tempDictTable2 = {'date': date ,'indoreMax': dfTable2['MAXIMUM'][0],'indoreMin': dfTable2['MINIMUM'][0],'itarsiMax': dfTable2['MAXIMUM'][1],'itarsiMin': dfTable2['MINIMUM'][1],'jetpurMax': dfTable2['MAXIMUM'][2],'jetpurMin': dfTable2['MINIMUM'][2],'kalwaMax': dfTable2['MAXIMUM'][3],'kalwaMin': dfTable2['MINIMUM'][3],'karadMax': dfTable2['MAXIMUM'][4],'karadMin': dfTable2['MINIMUM'][4],'kasorMax': dfTable2['MAXIMUM'][5],'kasorMin': dfTable2['MINIMUM'][5],'khandwaMax': dfTable2['MAXIMUM'][6],'khandwaMin': dfTable2['MINIMUM'][6],'nagdaMax': dfTable2['MAXIMUM'][7],'nagdaMin': dfTable2['MINIMUM'][7],'parliMax': dfTable2['MAXIMUM'][8],'parliMin': dfTable2['MINIMUM'][8]}
+        tempDictTable2 = {'date': date ,'indoreMax': round(dfTable2['MAXIMUM'][0]),'indoreMin': round(dfTable2['MINIMUM'][0]),'itarsiMax': round(dfTable2['MAXIMUM'][1]),'itarsiMin': round(dfTable2['MINIMUM'][1]),'jetpurMax': round(dfTable2['MAXIMUM'][2]),'jetpurMin': round(dfTable2['MINIMUM'][2]),'kalwaMax': round(dfTable2['MAXIMUM'][3]),'kalwaMin': round(dfTable2['MINIMUM'][3]),'karadMax': round(dfTable2['MAXIMUM'][4]),'karadMin': round(dfTable2['MINIMUM'][4]),'kasorMax': round(dfTable2['MAXIMUM'][5]),'kasorMin': round(dfTable2['MINIMUM'][5]),'khandwaMax': round(dfTable2['MAXIMUM'][6]),'khandwaMin': round(dfTable2['MINIMUM'][6]),'nagdaMax': round(dfTable2['MAXIMUM'][7]),'nagdaMin': round(dfTable2['MINIMUM'][7]),'parliMax': round(dfTable2['MAXIMUM'][8]),'parliMin': round(dfTable2['MINIMUM'][8])}
         self.voltTable2.append(tempDictTable2)
 
-        tempDictTable3 = {'date': date ,'raigarhMax': dfTable3['MAXIMUM'][0],'raigarhMin': dfTable3['MINIMUM'][0],'raipurMax': dfTable3['MAXIMUM'][1],'raipurMin': dfTable3['MINIMUM'][1],'vapiMax': dfTable3['MAXIMUM'][2],'vapiMin': dfTable3['MINIMUM'][2],'wardhaMax': dfTable3['MAXIMUM'][3],'wardhaMin': dfTable3['MINIMUM'][3],'binaMax': dfTable3['MAXIMUM'][4],'binaMin': dfTable3['MINIMUM'][4],'durgMax': dfTable3['MAXIMUM'][5],'durgMin': dfTable3['MINIMUM'][5],'gwaliorMax': dfTable3['MAXIMUM'][6],'gwaliorMin': dfTable3['MINIMUM'][6],'indoreMax': dfTable3['MAXIMUM'][7],'indoreMin': dfTable3['MINIMUM'][7],'kotraMax': dfTable3['MAXIMUM'][8],'kotraMin': dfTable3['MINIMUM'][8]}
+        tempDictTable3 = {'date': date ,'raigarhMax': round(dfTable3['MAXIMUM'][0]),'raigarhMin': round(dfTable3['MINIMUM'][0]),'raipurMax': round(dfTable3['MAXIMUM'][1]),'raipurMin': round(dfTable3['MINIMUM'][1]),'vapiMax': round(dfTable3['MAXIMUM'][2]),'vapiMin': round(dfTable3['MINIMUM'][2]),'wardhaMax': round(dfTable3['MAXIMUM'][3]),'wardhaMin': round(dfTable3['MINIMUM'][3]),'binaMax': round(dfTable3['MAXIMUM'][4]),'binaMin': round(dfTable3['MINIMUM'][4]),'durgMax': round(dfTable3['MAXIMUM'][5]),'durgMin': round(dfTable3['MINIMUM'][5]),'gwaliorMax': round(dfTable3['MAXIMUM'][6]),'gwaliorMin': round(dfTable3['MINIMUM'][6]),'indoreMax': round(dfTable3['MAXIMUM'][7]),'indoreMin': round(dfTable3['MINIMUM'][7]),'kotraMax': round(dfTable3['MAXIMUM'][8]),'kotraMin': round(dfTable3['MINIMUM'][8])}
         self.voltTable3.append(tempDictTable3)
         
-        tempDictTable4 = {'date': date ,'sasanMax': dfTable4['MAXIMUM'][0],'sasanMin': dfTable4['MINIMUM'][0],'satnaMax': dfTable4['MAXIMUM'][1],'satnaMin': dfTable4['MINIMUM'][1],'seoniMax': dfTable4['MAXIMUM'][2],'seoniMin': dfTable4['MINIMUM'][2],'sipatMax': dfTable4['MAXIMUM'][3],'sipatMin': dfTable4['MINIMUM'][3],'tamnarMax': dfTable4['MAXIMUM'][4],'tamnarMin': dfTable4['MINIMUM'][4],'vadodaraMax': dfTable4['MAXIMUM'][5],'vadodaraMin': dfTable4['MINIMUM'][5],'wardhaMax': dfTable4['MAXIMUM'][6],'wardhaMin': dfTable4['MINIMUM'][6]}
+        tempDictTable4 = {'date': date ,'sasanMax': round(dfTable4['MAXIMUM'][0]),'sasanMin': round(dfTable4['MINIMUM'][0]),'satnaMax': round(dfTable4['MAXIMUM'][1]),'satnaMin': round(dfTable4['MINIMUM'][1]),'seoniMax': round(dfTable4['MAXIMUM'][2]),'seoniMin': round(dfTable4['MINIMUM'][2]),'sipatMax': round(dfTable4['MAXIMUM'][3]),'sipatMin': round(dfTable4['MINIMUM'][3]),'tamnarMax': round(dfTable4['MAXIMUM'][4]),'tamnarMin': round(dfTable4['MINIMUM'][4]),'vadodaraMax': round(dfTable4['MAXIMUM'][5]),'vadodaraMin': round(dfTable4['MINIMUM'][5]),'wardhaMax': round(dfTable4['MAXIMUM'][6]),'wardhaMin': round(dfTable4['MINIMUM'][6])}
         self.voltTable4.append(tempDictTable4)
                
             
@@ -93,9 +93,9 @@ class FetchDerivedVoltage():
 
                 # fetching derived voltage data for each day.
                 for date in dates:
-                    fetch_sql = '''select  vt.date_key, vt.node_name,mt.node_voltage, vt.maximum, vt.minimum from 
+                    fetch_sql = '''select  vt.mapping_id,vt.date_key, vt.node_name,mt.node_voltage, vt.maximum, vt.minimum from 
                                 derived_voltage vt, voltage_mapping_table mt
-                                where  vt.mapping_id = mt.id and  mt.is_included_in_daily_voltage = 'T' and date_key = to_date(:start_date) '''
+                                where  vt.mapping_id = mt.id and  mt.is_included_in_daily_voltage = 'T' and date_key = to_date(:start_date)   '''
 
                     cur.execute(
                         "ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD ' ")
@@ -103,8 +103,10 @@ class FetchDerivedVoltage():
 
                     #sorting node_name alphabetically.
                     df.sort_values(['NODE_VOLTAGE', 'NODE_NAME'], ascending=[True, True], inplace=True,ignore_index=True)
-
+                    # print(df)
                     #passing object to appendTables method.
+                    # df['MAXIMUM'] = df['MAXIMUM'].round().astype(int)
+                    # df['MINIMUM'] = df['MINIMUM'].round().astype(int)
                     self.appendTables(df)    
                     
 

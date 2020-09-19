@@ -116,7 +116,8 @@ class FetchDerivedVDI():
             cur.close()
             connection.close()
             print("connection closed")
-        
+        df['MAXIMUM'] = df['MAXIMUM'].round().astype(int)
+        df['MINIMUM'] = df['MINIMUM'].round().astype(int)
         derivedVDIDict= self.toDerivedVDIDict(df)
         return derivedVDIDict
        
