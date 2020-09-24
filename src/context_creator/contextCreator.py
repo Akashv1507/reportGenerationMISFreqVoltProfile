@@ -42,7 +42,7 @@ class ContextCreator():
                   'week_no'  : self.weekNo,
                   'start_dt' : self.startDate,
                   'end_dt'   : self.endDate,
-                  'weekVDI'  : round(weeklyFDI,2),
+                  'weekVDI'  : "{:0.2f}".format(weeklyFDI),
                   'derFreqList' : rowsFreqProfile,
                   'rows400Kv' : rows400Kv,
                   'rows765Kv'  : rows765Kv,

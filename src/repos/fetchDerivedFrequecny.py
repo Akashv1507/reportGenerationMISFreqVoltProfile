@@ -37,15 +37,15 @@ class FetchDerivedFrequency():
         for ind in df.index:
             tempDict = {
                         'date' : df['DATE_KEY'][ind],
-                        'max'  : df['MAXIMUM'][ind],
-                        'min'  : df['MINIMUM'][ind],
-                        'avg'  : df['AVERAGE'][ind],
-                        'less' : df['LESS_THAN_BAND'][ind],
-                        'bw'  : df['BETWEEN_BAND'][ind],
-                        'great'    : df['GREATER_THAN_BAND'][ind],
-                        'out'  : df['OUT_OF_BAND'][ind],
-                        'outHrs': df['OUT_OF_BAND_INHRS'][ind],
-                        'fdi'  : df['FDI'][ind]
+                        'max'  : "{:0.2f}".format(df['MAXIMUM'][ind]),
+                        'min'  : "{:0.2f}".format(df['MINIMUM'][ind]),
+                        'avg'  : "{:0.2f}".format(df['AVERAGE'][ind]),
+                        'less' : "{:0.2f}".format(df['LESS_THAN_BAND'][ind]),
+                        'bw'  : "{:0.2f}".format(df['BETWEEN_BAND'][ind]),
+                        'great'    : "{:0.2f}".format(df['GREATER_THAN_BAND'][ind]),
+                        'out'  : "{:0.2f}".format(df['OUT_OF_BAND'][ind]),
+                        'outHrs': "{:0.2f}".format(df['OUT_OF_BAND_INHRS'][ind]),
+                        'fdi'  : "{:0.2f}".format(df['FDI'][ind])
                         }
             derFreqRows.append(tempDict)
         derivedFrequencyDict['rows'] = derFreqRows

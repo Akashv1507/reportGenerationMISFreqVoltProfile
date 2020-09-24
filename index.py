@@ -17,4 +17,6 @@ endDate = dt.strptime(args.end_date, '%Y-%m-%d')
 
 
 reportGeneration(startDate,endDate,configDict)
-
+# x = 50.80
+# # print(round(49.50, 2))
+# print("{:0.2f}".format(x))

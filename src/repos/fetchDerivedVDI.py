@@ -2,6 +2,7 @@ import cx_Oracle
 import pandas as pd
 import datetime as dt
 from typing import List, Tuple
+from src.utils.stringUtils import convertHrsToSpanStr
 
 
 class FetchDerivedVDI():
@@ -48,9 +49,9 @@ class FetchDerivedVDI():
                         'less': round(groupDf['LESS_THAN_BAND'][ind], 2),
                         'bet' : round(groupDf['BETWEEN_BAND'][ind], 2),
                         'great' : round(groupDf['GREATER_THAN_BAND'][ind], 2),
-                        'lessHr' : round(groupDf['LESS_THAN_BAND_INHRS'][ind], 2),
-                        'greatHr' : round(groupDf['GREATER_THAN_BAND_INHRS'][ind], 2),
-                        'out'  : round(groupDf['OUT_OF_BAND_INHRS'][ind], 2),
+                        'lessHr' : convertHrsToSpanStr(groupDf['LESS_THAN_BAND_INHRS'][ind]),
+                        'greatHr' :  convertHrsToSpanStr(groupDf['GREATER_THAN_BAND_INHRS'][ind]),
+                        'out'  : convertHrsToSpanStr(groupDf['OUT_OF_BAND_INHRS'][ind]),
                         'vdi'   : round(groupDf['VDI'][ind], 2)
                     }
                     VDIRows400Kv.append(tempDict)
@@ -65,18 +66,15 @@ class FetchDerivedVDI():
                         'less': round(groupDf['LESS_THAN_BAND'][ind], 2),
                         'bet' : round(groupDf['BETWEEN_BAND'][ind], 2),
                         'great' : round(groupDf['GREATER_THAN_BAND'][ind], 2),
-                        'lessHr' : round(groupDf['LESS_THAN_BAND_INHRS'][ind], 2),
-                        'greatHr' : round(groupDf['GREATER_THAN_BAND_INHRS'][ind], 2),
-                        'out'  : round(groupDf['OUT_OF_BAND_INHRS'][ind], 2),
+                        'lessHr' : convertHrsToSpanStr(groupDf['LESS_THAN_BAND_INHRS'][ind]),
+                        'greatHr' :  convertHrsToSpanStr(groupDf['GREATER_THAN_BAND_INHRS'][ind]),
+                        'out'  : convertHrsToSpanStr(groupDf['OUT_OF_BAND_INHRS'][ind]),
                         'vdi'   : round(groupDf['VDI'][ind], 2)
                     }
                     VDIRows765Kv.append(tempDict)
         derivedVDIDict['VDIRows400Kv']   =   VDIRows400Kv
         derivedVDIDict['VDIRows765Kv']   =   VDIRows765Kv
         return derivedVDIDict
-
-
-
 
     
     def fetchDerivedVDI(self, startDate : dt.datetime )->dict:
